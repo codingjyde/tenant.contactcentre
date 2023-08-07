@@ -3,7 +3,7 @@ name: Deploy Quasar SPA
 on:
   push:
     branches:
-      - main  # Change to your desired branch 
+      - main  # Change to your desired branch
 
 jobs:
   deploy:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -35,11 +35,8 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          # Create a directory on the server to store the app
-          ssh ${username}@${host} "mkdir -p /tenant"
-
           # Transfer the built app files to the server using SCP
-          scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/* ${username}@${host}:/tenant
+          scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/* ${username}@${host}:/tenant.contactcentre
 
           # SSH into the server
-          ssh ${username}@${host} "cd /tenant && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start"
+          ssh ${username}@${host} "cd /tenant.contactcentre && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start"
