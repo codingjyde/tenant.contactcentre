@@ -3,7 +3,7 @@ name: Deploy Quasar SPA
 on:
   push:
     branches:
-      - main  # Change to your desired branch
+      - main  # Change to your desired branch 
 
 jobs:
   deploy:
