@@ -43,3 +43,6 @@ jobs:
 
           # SSH into the server
           cd ~/tenant.contactcentre && ls && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start
+
+    - name: List Directory Contents
+      run: ls ~/tenant.contactcentre
