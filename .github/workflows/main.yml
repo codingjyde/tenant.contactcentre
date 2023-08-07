@@ -39,7 +39,7 @@ jobs:
           mkdir -p ~/tenant.contactcentre
           
           # Transfer the built app files to the server using SCP
-          scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/* ${username}@${host}:/tenant.contactcentre
+          scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/spa/* ${username}@${host}:~/tenant.contactcentre
 
           # SSH into the server
-          ssh ${username}@${host} "cd /tenant.contactcentre && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start"
+          cd ~/tenant.contactcentre && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start
