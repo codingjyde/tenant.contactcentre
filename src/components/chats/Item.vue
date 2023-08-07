@@ -36,9 +36,9 @@
 <script>
   import { mapGetters } from "vuex";
 
-  import SocketMessages from "../../../../api/constants/socket_messages";
-  import WebChatMemberRole from "../../../../api/constants/web_chat_member_role";
-  import WebChatMessageType from "../../../../api/constants/web_chat_message_type";
+  import SocketMessages from "../../constants/socket_messages";
+  import WebChatMemberRole from "../../constants/web_chat_member_role";
+  import WebChatMessageType from "../../constants/web_chat_message_type";
 
   import WebChatMessage from '../../models/web_chat_message';
   import WebChatSession from '../../models/web_chat_session';
@@ -48,7 +48,7 @@
     data: function() {
       return {
         messageText: "",
-      }  
+      }
     },
     computed: {
       ...mapGetters({
@@ -59,7 +59,7 @@
       }),
       contact: function() {
         const self = this;
-        
+
         try {
           return self.session.members.find(x => x.role === WebChatMemberRole.CONTACT);
         } catch (error) {
@@ -68,7 +68,7 @@
       },
       messages: function() {
         const self = this;
-        
+
         try {
           return self.session.messages.map(x => {
             return {
@@ -86,7 +86,7 @@
       },
       session: function() {
         const self = this;
-        
+
         try {
           return WebChatSession.query().withAll().where("id", self.id).first();
         } catch (error) {
@@ -97,7 +97,7 @@
     methods: {
       onEnter: async function() {
         const self = this;
-        
+
         try {
           if(!self.messageText) {
             return;
@@ -129,15 +129,15 @@
 
           WebChatMessage.insert({
             data: message
-          });          
-          
+          });
+
           self.messageText = "";
 
           self.$socket.emit(SocketMessages.WEB_CHAT_MESSAGE, {
             organisationId,
-            sessionId, 
-            messageId, 
-            content, 
+            sessionId,
+            messageId,
+            content,
             type,
             sender: {
                 name,

@@ -21,7 +21,7 @@
 <script>
     import ChatsView from "src/constants/chats_view";
 
-    import WebChatMemberRole from "../../../../api/constants/web_chat_member_role";
+    import WebChatMemberRole from "../../constants/web_chat_member_role";
 
     import WebChatSession from '../../models/web_chat_session';
     import WebChatMessage from '../../models/web_chat_message';
@@ -30,13 +30,13 @@
         name: "ChatItems",
         data: function() {
             return {
-            
+
             }
         },
         computed: {
             messages: function() {
                 const self = this;
-                
+
                 try {
                     let messages = [];
 
@@ -44,8 +44,8 @@
                         const message = WebChatMessage.query().where('sessionId', session.$id).orderBy("updatedAt").last();
                         if(message) {
                             message.contact = session.members.find(x => x.role === WebChatMemberRole.CONTACT);
-                            messages.push(message);               
-                        } 
+                            messages.push(message);
+                        }
                     }
 
                     messages.sort((a,b) => b.updatedAt - a.updatedAt);
@@ -57,7 +57,7 @@
             },
             sessions: function() {
                 const self = this;
-                
+
                 try {
                     return WebChatSession.query().withAll().get();
                 } catch (error) {
@@ -67,7 +67,7 @@
         },
         created: async function() {
             const self = this;
-            
+
             try {
                 self.loadData();
             } catch (error) {
@@ -77,7 +77,7 @@
         methods: {
             getLastMessage: function(sessionId) {
                 const self = this;
-                
+
                 try {
                     return WebChatMessage.all()[0];
                 } catch (error) {
@@ -86,17 +86,17 @@
             },
             loadData: async function() {
                 const self = this;
-            
+
                 try {
-                    
-                    
+
+
                 } catch (error) {
                     self.$handle(error);
                 }
             },
             onSelected: function(sessionId) {
                 const self = this;
-                
+
                 try {
                     self.$emit("itemSelected", sessionId);
                 } catch (error) {
@@ -105,17 +105,17 @@
             }
         },
         components: {
-        
+
         },
         watch: {
             view: function() {
                 const self = this;
-            
+
                 try {
                     self.loadData();
                 } catch (error) {
                     self.$handle(error);
-                }       
+                }
             }
         },
         props: {
