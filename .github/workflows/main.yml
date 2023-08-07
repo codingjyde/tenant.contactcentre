@@ -41,7 +41,7 @@ jobs:
           ls ~/tenant.contactcentre
           
           # Transfer the built app files to the server using SCP
-          rsync -avz --delete ./dist/spa/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:~/tenant.contactcentre
+          rsync -avz -e "ssh -p 22" --delete ./dist/spa/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:~/tenant.contactcentre
 
           # scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:~/tenant.contactcentre
 
