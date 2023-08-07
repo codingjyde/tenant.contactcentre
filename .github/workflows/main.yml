@@ -41,7 +41,9 @@ jobs:
           ls ~/tenant.contactcentre
           
           # Transfer the built app files to the server using SCP
-          scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/spa/* ${username}@${host}:~/tenant.contactcentre
+          rsync -avz ./dist/spa/ ${username}@${host}:~/tenant.contactcentre
+
+          # scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/spa/* ${username}@${host}:~/tenant.contactcentre
 
           ls ~/tenant.contactcentre
           
