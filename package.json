@@ -6,6 +6,7 @@
   "author": "dev@pronova.com.ng",
   "private": true,
   "scripts": {
+    "deploy": "node ./scripts/test.deploy.js",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {

@@ -157,7 +157,7 @@ module.exports = configure(function (ctx) {
       manifest: {
         name: `ContactCentre`,
         short_name: `ContactCentre`,
-        description: `A Quasar Project`,
+        description: ``,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
