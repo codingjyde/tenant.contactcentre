@@ -1,0 +1,10 @@
+{
+  "appId": "ng.com.pronova.contactcentre.mobile.ios.app",
+  "appName": "ContactCentre",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.100.20:8081"
+  }
+}

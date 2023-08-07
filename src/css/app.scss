@@ -1,0 +1,79 @@
+@font-face {
+    font-family: sf-ui-light;
+    src: url(./fonts/sf-ui-display-light-58646b33e0551.otf);
+}
+  
+.sf-ui-light {
+    font-family: 'sf-ui-light';
+}
+
+@font-face {
+    font-family: sf-ui-thin;
+    src: url(./fonts/sf-ui-display-thin-58646e9b26e8b.otf);
+}
+  
+.sf-ui-thin {
+    font-family: 'sf-ui-thin';
+}
+
+@font-face {
+    font-family: ubuntu;
+    src: url(./fonts/Ubuntu-Regular.ttf);
+}
+
+.ubuntu {
+    font-family: 'ubuntu';
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+}
+
+body {
+    font-family: sf-ui-light;
+    background-color: $grey-2;
+}
+
+.filter-white {
+    filter: invert(100%) sepia(14%) saturate(0%) hue-rotate(90deg) brightness(118%) contrast(100%);
+}
+
+.small-caps {
+    font-variant: small-caps;
+}
+
+.text-caption {
+    color: $grey-7;
+}
+
+.text-h1, 
+.text-h2, 
+.text-h3, 
+.text-h4, 
+.text-h5, 
+.text-h6 {
+    // font-family: 'ubuntu';
+}
+
+/* Apply custom styles to the scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  /* Track (background) of the scrollbar */
+  ::-webkit-scrollbar-track {
+    background: $grey-2;
+  }
+  
+  /* Handle (thumb) of the scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background: $grey-6;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+  }
+  
