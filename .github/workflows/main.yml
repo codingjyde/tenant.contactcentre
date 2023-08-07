@@ -42,4 +42,4 @@ jobs:
           scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/spa/* ${username}@${host}:~/tenant.contactcentre
 
           # SSH into the server
-          cd ~/tenant.contactcentre && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start
+          cd ~/tenant.contactcentre && ls && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start
