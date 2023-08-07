@@ -37,12 +37,13 @@ jobs:
         script: |
           # Create a directory on the server to store the app
           mkdir -p ~/tenant.contactcentre
+
+          ls ~/tenant.contactcentre
           
           # Transfer the built app files to the server using SCP
           scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/spa/* ${username}@${host}:~/tenant.contactcentre
 
+          ls ~/tenant.contactcentre
+          
           # SSH into the server
           cd ~/tenant.contactcentre && ls && npm install pm2 -g && pm2 start npm --name contactcentre-tenant -- start
-
-    - name: List Directory Contents
-      run: ls ~/tenant.contactcentre
