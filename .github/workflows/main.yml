@@ -36,7 +36,7 @@ jobs:
         port: 22
         script: |
           # Create a directory on the server to store the app
-          ssh ${{ secrets.SERVER_USERNAME }}@$${{ secrets.SERVER_IP }} "mkdir -p /tenant.contactcentre"
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "mkdir -p /tenant.contactcentre"
           
           # Transfer the built app files to the server using SCP
           scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r ./dist/* ${username}@${host}:/tenant.contactcentre
