@@ -54,8 +54,8 @@ module.exports = configure(function (ctx) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
       env: {
-        APP_NAME: "ContactCentre",
-        SERVER_URL: "https://api.test.contactcentre.africa" // "http://app.contactcentre.local:3000"
+        APP_NAME: "ContactCentre Dev",
+        SERVER_URL: ctx.prod ? "https://tenant.api.test.contactcentre.africa" : "http://tenant.api.contactcentre.local:3000"
       },
       vueRouterMode: 'hash', // available values: 'hash', 'history'
 

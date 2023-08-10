@@ -4,6 +4,7 @@ import conversations from "./conversations";
 import domains from "./domains";
 import emailAccounts from "./email_accounts";
 import labels from "./labels";
+import telephonyAccounts from "./telephony_accounts";
 import webChatAccounts from "./web_chat_accounts";
 
 export default home
@@ -12,4 +13,5 @@ export default home
     .concat(domains)
     .concat(emailAccounts)
     .concat(labels)
+    .concat(telephonyAccounts)
     .concat(webChatAccounts);

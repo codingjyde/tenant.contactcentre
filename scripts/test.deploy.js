@@ -24,5 +24,6 @@ function runCommand(command, nextCommand) {
   });
 }
 
-// Example usage: Run commands in sequence
-runCommand("quasar build", "rsync -avz --delete ./dist/spa/ root@64.225.97.77:~/tenant.contactcentre");
+const serverIp = "104.248.45.130";
+
+runCommand("quasar build", `rsync -avz --delete ./dist/spa/ root@${ serverIp }:/apps/contactcentre/tenant/`);

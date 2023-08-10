@@ -2,34 +2,36 @@
     <div>
         <Header title='Create Email Account' />
 
-        <div class='row'>
-            <div class='col-sm-4'>
-                <q-form class='q-gutter-sm' v-on:submit='onSubmit'>
-                    <div>
-                        <q-input dense outlined label='Name' maxlength='64' v-model='name' />
-                        <div class='text-caption text-negative'>{{ validation.firstError('name') }}</div>
-                    </div>
-                    <div>
-                        <div class="row q-gutter-sm">
-                            <div class="col">
-                                <q-input dense outlined label='Address' maxlength='64' v-model='local' />
-                                <div class='text-caption text-negative'>{{ validation.firstError('local') }}</div>
-                            </div>
-                            <div class="col">
-                                <q-select dense outlined label="Domain" v-bind:options="domains" v-model="domain" />
-                                <div class='text-caption text-negative'>{{ validation.firstError('domain') }}</div>
+        <div class="flex flex-center" style="height: calc(100vh - 240px)">
+            <q-card class="bg-white" style="min-width:320px;">
+                <q-card-section>
+                    <q-form class='q-gutter-sm' v-on:submit='onSubmit'>
+                        <div>
+                            <q-input dense outlined label='Name' maxlength='64' v-model='name' />
+                            <div class='text-caption text-negative'>{{ validation.firstError('name') }}</div>
+                        </div>
+                        <div>
+                            <div class="row q-gutter-sm">
+                                <div class="col">
+                                    <q-input dense outlined label='Address' maxlength='64' v-model='local' />
+                                    <div class='text-caption text-negative'>{{ validation.firstError('local') }}</div>
+                                </div>
+                                <div class="col">
+                                    <q-select dense outlined label="Domain" v-bind:options="domains" v-model="domain" />
+                                    <div class='text-caption text-negative'>{{ validation.firstError('domain') }}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <q-btn disabled no-caps class='full-width' color='primary' v-if='isBusy'>
-                            <i>Busy, please wait...</i>
-                        </q-btn>
-                        <q-btn no-caps class='full-width' label='Submit' type='submit' color='primary' v-else />
-                        <q-btn flat no-caps class='full-width' label='Cancel' color='primary' to='/channelaccounts' />
-                    </div>
-                </q-form>
-            </div>
+                        <div>
+                            <q-btn disabled no-caps class='full-width' color='primary' v-if='isBusy'>
+                                <i>Busy, please wait...</i>
+                            </q-btn>
+                            <q-btn no-caps class='full-width' label='Submit' type='submit' color='primary' v-else />
+                            <q-btn flat no-caps class='full-width' label='Cancel' color='primary' to='/channelaccounts' />
+                        </div>
+                    </q-form>
+                </q-card-section>
+            </q-card>
         </div>
     </div>
 </template>
@@ -75,7 +77,7 @@
         },
         created: async function() {
             const self = this;
-            
+
             try {
                 const config = {
                     method: 'get',
@@ -87,7 +89,7 @@
                 };
 
                 const response = await self.$api(config);
-                
+
                 self.domains = response.data.items.map(x => {
                     return {
                         label: `@${ x.name }`,
@@ -127,7 +129,7 @@
 
                     const config = {
                         method: 'post',
-                        url: '/channelaccounts', 
+                        url: '/channelaccounts',
                         data
                     };
 

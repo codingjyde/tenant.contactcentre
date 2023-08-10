@@ -35,11 +35,11 @@
                     <div class="row">
                         <div class="col-6">
                             <q-btn disable flat no-caps class="cursor-not-allowed full-width" color="primary" label="Login" v-if="isBusy"/>
-                            <q-btn flat no-caps class="full-width" color="primary" label="Login" to="/login" v-else />        
+                            <q-btn flat no-caps class="full-width" color="primary" label="Login" to="/login" v-else />
                         </div>
                         <div class="col-6">
                             <q-btn disable flat no-caps class="cursor-not-allowed full-width" color="primary" label="Forgot Password" v-if="isBusy"/>
-                            <q-btn flat no-caps class="full-width" color="primary" label="Forgot Password" to="/forgotpassword" v-else />        
+                            <q-btn flat no-caps class="full-width" color="primary" label="Forgot Password" to="/forgotpassword" v-else />
                         </div>
                     </div>
                 </div>
@@ -55,11 +55,11 @@
         name: 'Register',
         data: function() {
             return {
-                organisationName: "Tricorde",
-                firstName: "Jide",
+                organisationName: "",
+                firstName: "",
                 middleName: "",
-                surname: "Lawal",
-                emailAddress: "jidelawal+1@gmail.com",
+                surname: "",
+                emailAddress: "",
 
                 isBusy: false
             }
@@ -85,7 +85,7 @@
             },
             emailAddress: function(value) {
                 const self = this;
-                
+
                 return self.$validator.value(value)
                     .required("Please provide your email address.")
                     .email("Please provide a valid email address.");
@@ -97,7 +97,7 @@
             }),
             flat: function() {
                 const self = this;
-                
+
                 try {
                     return self.$q.screen.lt.sm;
                 } catch (error) {
@@ -120,7 +120,7 @@
             }),
             onSubmit: async function() {
                 const self = this;
-                
+
                 try {
                     self.isBusy = true;
 
@@ -136,7 +136,7 @@
                         surname: self.surname,
                         emailAddress: self.emailAddress
                     };
-                    
+
                     const config = {
                         method: 'post',
                         url: '/register',
@@ -144,7 +144,7 @@
                     };
 
                     const response = await self.$api(config);
-                    
+
                     self.login({
                         accessToken: response.data.accessToken,
                         refreshToken: response.data.refreshToken,
